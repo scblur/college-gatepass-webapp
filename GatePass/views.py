@@ -75,8 +75,19 @@ def normalCreate(request):
     import pytz
 
     tz=pytz.timezone('Asia/Kolkata')
+    # print(tz)
     time_now = datetime.now(timezone.utc).astimezone(tz)
+    # print(time_now)
     millis = int(time.mktime(time_now.timetuple()))
+    # print(time_now.timetuple())
+    # print(time.mktime(time_now.timetuple()))
+    # print(millis)
+
+    i = float(millis)
+
+    dt = datetime.fromtimestamp(i).strftime('%H:%M %d-%m-%Y')
+    print(dt)
+    print(type(dt))
 
     date_of_going=request.POST.get('date_of_going')
     reason=request.POST.get('reason')
@@ -93,7 +104,8 @@ def normalCreate(request):
         "reason":reason,
         "time_in":time_in,
         "time_out":time_out,
-        "status":"Pending"
+        "status":"Pending",
+        "time_of_applying":dt
         }
     database.child("normal").child(a).child(millis).set(data)
     # database.child("normal").child(a).set(data)
@@ -103,7 +115,9 @@ def normalView(request):
     import datetime
 
     idtoken = request.session['uid']
+    # print(idtoken)
     a = authe.get_account_info(idtoken)
+    print(a)
     a = a['users']
     a = a[0]
     a = a['localId']
@@ -113,7 +127,7 @@ def normalView(request):
     for i in timestamps:
         list_time.append(i)
     list_time.sort(reverse=True)
-    print(list_time) # seconds id
+    # print(list_time) # seconds id
 
     date_list = []
     status_list = []
@@ -122,15 +136,15 @@ def normalView(request):
         date_list.append(dat)
         statu = database.child("normal").child(a).child(i).child("status").get().val()
         status_list.append(statu)
-    print(date_list) # Date of going
-    print(status_list)
+    # print(date_list) # Date of going
+    # print(status_list)
 
     date_time = []
     for i in list_time:
         i = float(i)
         dt = datetime.datetime.fromtimestamp(i).strftime('%H:%M %d-%m-%Y')
         date_time.append(dt)
-    print(date_time) # date time
+    # print(date_time) # date time
 
     combined_list = zip(list_time,date_time,date_list,status_list)
     name = database.child("students").child(a).child("name").get().val()
