@@ -20,6 +20,16 @@ def singIn(request):
     return render(request, "signin.html")
 
 def postsign(request):
+    # import datetime
+
+    # idtoken = request.session['uid']
+    # # print(idtoken)
+    # a = authe.get_account_info(idtoken)
+    # print(a)
+    # a = a['users']
+    # a = a[0]
+    # a = a['localId']
+
     email=request.POST.get('email')
     passw = request.POST.get("pass")
     try:
@@ -30,6 +40,7 @@ def postsign(request):
     # print(user['idToken'])
     session_id = user['idToken']
     request.session['uid'] = str(session_id)
+    # name = database.child("students").child(a).child("name").get().val()
     return render(request, "welcome.html",{"e":email})
 
 def logout(request):
