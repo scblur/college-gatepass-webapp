@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
       .welcome{
-        width: 600px;
         padding: 50px;
-        border: 5px solid blue;
+border: 1px solid pink;
+border-radius: 10px;
+width: 400px;
+        /* width: 600px;
+        padding: 50px;
+        border: 5px solid blue; */
       }
       .normal {
           border-radius: 4px;
@@ -63,6 +68,18 @@
           cursor: pointer;
           margin: 5px;
       }
+      .select_pass{
+        background-color: #ff0700;
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-size: 35px;
+      }
+
+      body{
+        background-color: #e8f3f8;
+      }
+
 
     </style>
 </head>
@@ -76,6 +93,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <!-- <div>
+            <img src="photo.jpg" alt="Logo Not Found">
+          </div> -->
           <a class="navbar-brand">AnandICE GatePass</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
@@ -92,11 +112,15 @@
     <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button> -->
   <!-- </div> -->
   <br><br>
+  <!-- <center>
+  <div class="logo">
+    <img src="{% static 'css/Logo-.png' %}" / >
+  </div></center> -->
   <center><h1>Welcome {{e}}</h1></center>
-  <br><br><br>
+  <br>
   <center>
     <div class='welcome'>
-      <h2>Select Your GatePass:</h2> <br>
+      <h2 class='select_pass'>SELECT YOUR GATEPASS:</h2> <br>
       <button class='normal' type="button" onclick="location.href='{% url 'normal' %}'">Normal GatePass</button>
       <button class='normal' type="button" onclick="location.href='{% url 'view_normal' %}'">View Normal GatePass</button>
       <br><br>

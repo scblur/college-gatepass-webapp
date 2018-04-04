@@ -1,3 +1,4 @@
+{% load static %}
 {% if msg %}
 <script>
     alert('{{msg}}')
@@ -16,53 +17,41 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static "css/register_style.css" %}">
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">AnandICE GatePass</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <!-- <li><a href="#">About</a></li> -->
-            <!-- <li><a href="#">Link</a></li> -->
-            <li><a href="{% url 'log' %}">Login</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-    <br><br>
-  <center>
-    <form action="/postsignup/" method="post">
+
+<div class="title"><h1>Sign Up Form</h1></div>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="formBox">
+        <form action="/postsignup/" method="post">
         {% csrf_token %}
-        <br><br>
-        <h1>Name:
-        <input type="text" name="name"></h1>
-        <h1>College ID:
-        <input type="text" name="college_id"></h1>
-        <h1>Father's Mobile Number:
-        <input type="text" name="mobile_no_father"></h1>
-        <h1>Mother's Mobile Number:
-        <input type="text" name="mobile_no_mother"></h1>
-        <h1>Mobile Number (Self):
-        <input type="text" name="mobile_no_self"></h1>
-        <h1>Room Number:
-        <input type="text" name="room_no"></h1>
-        <h1>Semester:
-        <input type="text" name="semester"></h1>
-        <h1>Email :
-        <input type="email" name="email"></h1>
-        <h1>Password:
-        <input type="password" name="pass"></h1>
+        <p>Name:</p>
+        <input type="text" name="name">
+        <p>College ID:</p>
+        <input type="text" name="college_id">
+        <p>Father's Mobile Number:</p>
+        <input type="text" name="mobile_no_father">
+        <p>Mother's Mobile Number:</p>
+        <input type="text" name="mobile_no_mother">
+        <p>Mobile Number (Self):</p>
+        <input type="text" name="mobile_no_self">
+        <p>Room Number:</p>
+        <input type="text" name="room_no">
+        <p>Semester:</p>
+        <input type="text" name="semester">
+        <p>Email :</p>
+        <input type="email" name="email">
+        <p>Password:</p>
+        <input type="password" name="pass">
         <input type="submit" value="Register">
+        <a href="{% url 'home_login' %}">Already Registered? LOGIN HERE</a>
     </form>
-  </center>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,55 @@
+body{
+  background-color: #e8f3f8;
+}
+h1{
+  text-align: center;
+  font-size: 50px;
+  color: steelblue;
+}
+form{
+  margin: 20px auto;
+  width: 320px;
+  color: steelblue;
+}
+input{
+  padding: 10px;
+  font-size: inherit;
+}
+input[type="date"]{
+  display: block;
+  margin-bottom: 25px;
+  width: 100%;
+  border: 2px solid steelblue;
+  background: #FAF6D9;
+}
+input[type="time"]{
+  display: block;
+  margin-bottom: 25px;
+  width: 100%;
+  border: 2px solid steelblue;
+  background: #FAF6D9;
+}
+textarea{
+  display: block;
+  margin-bottom: 25px;
+  width: 100%;
+  border: 2px solid steelblue;
+  background: #FAF6D9;
+}
+input[type="submit"]{
+  width: 320px;
+  height: 45px;
+  border: none;
+  background: steelblue;
+  color: white;
+  
+}
+input[type="time"]:focus{
+  background: white;
+}
+input[type="date"]:focus{
+  background: white;
+}
+textarea:focus{
+  background: white;
+}

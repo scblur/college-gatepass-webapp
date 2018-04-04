@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,9 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static "css/view_normal_style.css" %}">
+
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -42,16 +46,34 @@
     </nav>
   <!-- <div class="logout">
     <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button> -->
-  </div>
-  <br><br>
-  <center><h1>Welcome {{e}}</h1></center>
-  <br>
-  <center> <h3>Here is the list of your applied "Normal GatePass":</h3> </center> <br>
-  {% for time,date_time,date,status in combined_list %}
-  <ul>
-    <li>Time/Date of Applying: {{date_time}} | Date of Going: {{date}} | Status: <strong>{{status}}</strong>  <i><a href="/post_view_normal/?z={{time}}">(more details..)</a></li></i>
-  </ul>
-  <br>
-  {% endfor %}
+  <!-- </div> -->
+
+<br><br><br>
+
+
+    <div class="container">
+    					<table id="ttd">
+    						<thead>
+    							<tr class="table100-head">
+    								<th class="column1">Time/Date of Applying</th>
+    								<th class="column2">Date of Going</th>
+    								<th class="column3">Status</th>
+    								<th class="column4">...</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+                  {% for time,date_time,date,status in combined_list %}
+    								<tr>
+    									<td class="column1">{{date_time}}</td>
+    									<td class="column2">{{date}}</td>
+    									<td class="column3"><strong>{{status}}</strong></td>
+    									<td class="column4"><a href="/post_view_normal/?z={{time}}">more details..</a></td>
+    								</tr>
+                  {% endfor %}
+    						</tbody>
+    					</table>
+    	</div>
+
 </body>
+
 </html>
