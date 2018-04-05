@@ -86,13 +86,13 @@ def normalCreate(request):
     import pytz
 
     tz=pytz.timezone('Asia/Kolkata')
-    # print(tz)
+    print(tz)
     time_now = datetime.now(timezone.utc).astimezone(tz)
-    # print(time_now)
+    print(time_now)
     millis = int(time.mktime(time_now.timetuple()))
-    # print(time_now.timetuple())
-    # print(time.mktime(time_now.timetuple()))
-    # print(millis)
+    print(time_now.timetuple())
+    print(time.mktime(time_now.timetuple()))
+    print(millis)
 
     i = float(millis)
 
@@ -184,7 +184,25 @@ def postNormalView(request):
 
     dt = datetime.datetime.fromtimestamp(i).strftime('%H:%M %d-%m-%Y')
     name = database.child("students").child(a).child("name").get().val()
-    return render(request,"post_view_normal.html",{"d":date_of_going,
+
+    if status == "Approved":
+        return render(request,"post_view_normal_approved.html",{"d":date_of_going,
+                                                    "r":reason,
+                                                    "s":status,
+                                                    "ti":time_in,
+                                                    "to":time_out,
+                                                    "dt":dt,
+                                                    "e":name})
+    elif status == "Rejected":
+        return render(request,"post_view_normal_rejected.html",{"d":date_of_going,
+                                                    "r":reason,
+                                                    "s":status,
+                                                    "ti":time_in,
+                                                    "to":time_out,
+                                                    "dt":dt,
+                                                    "e":name})
+    else:
+        return render(request,"post_view_normal.html",{"d":date_of_going,
                                                     "r":reason,
                                                     "s":status,
                                                     "ti":time_in,

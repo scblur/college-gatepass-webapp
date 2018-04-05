@@ -1,14 +1,15 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GatePass | Welcome Page</title>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
     </script>
+
     <style>
       .logout{
         position: absolute;
@@ -24,68 +25,71 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
     <style>
-      .welcome{
-        padding: 50px;
-border: 1px solid pink;
-border-radius: 10px;
-width: 400px;
-        /* width: 600px;
-        padding: 50px;
-        border: 5px solid blue; */
+      *{
+        box-sizing: border-box;
       }
-      .normal {
-          border-radius: 4px;
-          background-color: #40f535;
-          border: none;
-          color: #FFFFFF;
-          text-align: center;
-          /* font-size: 20px; */
-          padding: 10px;
-          width: 200px;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: 5px;
-      }
-      .night {
-          border-radius: 4px;
-          background-color: #535f57;
-          border: none;
-          color: #FFFFFF;
-          text-align: center;
-          /* font-size: 20px; */
-          padding: 10px;
-          width: 200px;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: 5px;
-      }
-      .emergency {
-          border-radius: 4px;
-          background-color: #f53535;
-          border: none;
-          color: #FFFFFF;
-          text-align: center;
-          /* font-size: 20px; */
-          padding: 10px;
-          width: 200px;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: 5px;
-      }
-      .select_pass{
-        background-color: #2e95a4;
-        color: white;
-        padding: 0px;
-        text-align: center;
-        font-size: 35px;
-      }
-
       body{
-        background-color: #e8f3f8;
+        background: lightblue;
       }
-
-
+      .wrap{
+        margin-top: 50px;
+        max-width: 1000px;
+        margin: auto;
+        font-family: Arial;
+      }
+      .columns{
+        float: left;
+        width: 33.3%;
+        padding: 15px;
+      }
+      .price{
+        list-style: none;
+        border: 1px solid #eee;
+        margin: 0;
+        padding: 0;
+        background: #efed40;
+        color: #000;
+      }
+      .price:hover{
+        box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+      }
+      .price .header{
+        background: #111;
+        color: white;
+        font-size: 25px;
+      }
+      .price li{
+        border-bottom: 1px #eee dotted;
+        padding: 20px;
+        text-align: center;
+      }
+      .price .price-button{
+        background-color: #eee;
+        font-size: 30px;
+        color: #000;
+        font-weight: bold;
+        background: #4caf50;
+      }
+      .button{
+        background: #ff267e;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      .button:hover{
+        background: #000;
+      }
+      @media only screen and (max-width:600px){
+        .columns{
+          width: 100%
+        }
+      }
     </style>
 </head>
 <body>
@@ -98,9 +102,6 @@ width: 400px;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- <div>
-            <img src="photo.jpg" alt="Logo Not Found">
-          </div> -->
           <a class="navbar-brand">AnandICE GatePass</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
@@ -112,29 +113,23 @@ width: 400px;
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+    <br><br><br>
   <!-- <div class="logout">
     <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button> -->
   <!-- </div> -->
   <br><br>
-  <!-- <center>
-  <div class="logo">
-    <img src="{% static 'css/Logo-.png' %}" / >
-  </div></center> -->
-  <center><h1>Welcome {{e}}</h1></center>
-  <br>
-  <center>
-    <div class='welcome'>
-      <h2 class='select_pass'>SELECT YOUR GATEPASS:</h2> <br>
-      <button class='normal' type="button" onclick="location.href='{% url 'normal' %}'">Normal GatePass</button>
-      <button class='normal' type="button" onclick="location.href='{% url 'view_normal' %}'">View Normal GatePass</button>
-      <br><br>
-      <button class='night' type="button">Night GatePass</button>
-      <button class='night' type="button">View Night GatePass</button>
-      <br><br>
-      <button class='emergency' type="button">Emergency GatePass</button>
-      <button class='emergency' type="button">View Emergency GatePass</button>
-    </div>
-</center>
+<div class="wrap" style="align:center">
+  <div class="columns">
+    <ul class="price">
+      <li class="header">{{e}} Normal GatePass</li>
+      <li class="price-button">{{s}}</li>
+      <li class="">Date Of Going : {{d}}</li>
+      <li>Time In : {{ti}}</li>
+      <li>Time Out : {{to}}</li>
+      <li>Reason : {{r}}</li>
+    </ul>
+  </div>
+</div>
+
 </body>
 </html>
